@@ -5,13 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        
-    </div>
+    <div class="container"> <!--div containing both of our left and right containers-->
+      <div id="left">
+        <div class="list" draggable="true"><img src="imgs/drag_drop_icon.png">List Items 1</div>
+        <div class="list" draggable="true"><img src="imgs/drag_drop_icon.png">List Items 2</div>
+        <div class="list" draggable="true"><img src="imgs/drag_drop_icon.png">List Items 3</div>
+        <div class="list" draggable="true"><img src="imgs/drag_drop_icon.png">List Items 4</div>
+      </div>
+      <div id="right">
+
+      </div>
+   </div>
     
+
+   <script>
+
+let lists = document.getElementsByClassName('list'); /*storing all of our list items in our lists*/
+let rightBox = document.getElementById('right');
+let leftBox = document.getElementById('left');/*same with these 2, getting all of our elemets and storing em up here*/
+
+for(let list of lists) { /*pretty obviouse but we looping through the list, BABY!!*/
+    list.addEventListener('dragstart', function(e) {
+        let selected = e.target; /*Adding an event listener to drag items and storing it in our selected variable*/
+
+            rightBox.addEventListener('dragover', function(e){
+                e.preventDefault() }); 
+
+            rightBox.addEventListener('drop', function(e){
+                rightBox.appendChild(selected);
+            selected = null });  /*same stuff but with dropping items and adding appendchild to add it to the rightbox whenever an item is dropped
+            + clearing the space where it came from with (selected = null)*/
+
+            leftBox.addEventListener('dragover', function(e){
+                e.preventDefault() }); /*another event listener for "dragover" preventing the default behavior to allow dropping*/
+
+            leftBox.addEventListener('drop', function(e){
+                leftBox.appendChild(selected);
+            selected = null });  /*we just copy pasted everything to make it work both ways now*/
+        }) };
+   </script>
 </body>
 </html>
