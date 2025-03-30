@@ -1,1 +1,1 @@
-[Live Site Here](dragandropitlikeitshot.netlify.app)
+[Simple Drag and Drop app](https://dragandropitlikeitshot.netlify.app/)
